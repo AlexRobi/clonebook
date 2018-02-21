@@ -6,3 +6,5 @@ fr:
     sign_up: "Inscription"
     settings: "Options"
     sign_out: "Se déconnecter"
+  edit_user:
+    title: "Modifier votre compte"

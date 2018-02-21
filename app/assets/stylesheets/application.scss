@@ -1,5 +1,6 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "font-awesome";
 
 nav {
   .lang-group {
@@ -14,5 +15,44 @@ nav {
         border: 1px solid #efefef;
       }
     }
+  }
+}
+
+#error_explanation {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  h2 {
+    font-size: 1.1em;
+  }
+}
+
+.alert-alert {
+  margin-top: 30px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+.alert-notice {
+  margin-top: 30px;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.label {
+  margin-bottom: 8px;
+}
+.field_with_errors {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+  input {
+    border: 1px solid red;
   }
 }

@@ -2,7 +2,9 @@ en:
   welcome: "Welcome !"
   header:
     home: "Home"
-    sign_in: "Sign in"
+    sign_in: "Log in"
     sign_up: "Sign up"
     settings: "Settings"
     sign_out: "Sign out"
+  edit_user:
+    title: "Edit your account"
