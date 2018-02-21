@@ -16,13 +16,15 @@ gem 'bootstrap',    '~> 4.0.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'figaro'
+gem 'devise-i18n'
+gem 'rails-i18n', '~> 5.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'sqlite3'
-  gem "letter_opener"
+  gem 'letter_opener'
 end
 
 group :development do
