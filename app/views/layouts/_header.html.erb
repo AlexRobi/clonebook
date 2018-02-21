@@ -32,8 +32,8 @@
         <% end %>
         <li class="lang-group nav-item">
           <div class="nav-link">
-            <a href="?locale=en"><img src="assets/lang_en.png" class="lang <%= 'active' if params[:locale] == 'en' %>" /></a>
-            <a href="?locale=fr"><img src="assets/lang_fr.png" class="lang <%= 'active' if params[:locale] == 'fr' %>" /></a>
+            <a href="?locale=en"><%= image_tag "lang_en.png", class: params[:locale] == "en" ? "lang active" : "lang" %></a>
+            <a href="?locale=fr"><%= image_tag "lang_fr.png", class: params[:locale] == "fr" ? "lang active" : "lang" %></a>
           </div>
         </li>
       </ul>
