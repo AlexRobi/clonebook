@@ -6,7 +6,3 @@ fr:
     sign_up: "Inscription"
     settings: "Options"
     sign_out: "Se déconnecter"
-    language:
-      lang: "Langage "
-      fr: "Français"
-      en: "English"

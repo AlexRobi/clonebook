@@ -1,2 +1,18 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+nav {
+  .lang-group {
+    display: flex;
+    flex-direction: row;
+    a {
+      .lang {
+        width: 30px;
+        border: 1px solid #343A40;
+      }
+      .active {
+        border: 1px solid #efefef;
+      }
+    }
+  }
+}

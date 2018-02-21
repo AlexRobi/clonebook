@@ -30,16 +30,12 @@
             <%= link_to t('header.sign_up'), new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= t('header.language.lang') %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('header.language.fr'), "?locale=fr", class: "dropdown-item" %>
-              <div class="dropdown-divider"></div>
-              <%= link_to t('header.language.en'), "?locale=en", class: "dropdown-item" %>
-            </div>
-          </li>
+        <li class="lang-group nav-item">
+          <div class="nav-link">
+            <a href="?locale=en"><img src="assets/lang_en.png" class="lang <%= 'active' if params[:locale] == 'en' %>" /></a>
+            <a href="?locale=fr"><img src="assets/lang_fr.png" class="lang <%= 'active' if params[:locale] == 'fr' %>" /></a>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
