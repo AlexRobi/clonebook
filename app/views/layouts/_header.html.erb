@@ -1,42 +1,52 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav>
   <div class="container">
-    <%= link_to "Clonebook", root_url, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item <%= 'active' if current_page?(root_url) %>">
-          <%= link_to t('header.home'), root_path, class: "nav-link" %>
+    <ul class="nav">
+      <% if user_signed_in? %>
+        <li class="nav-item item-link <%= 'active' if current_page?(root_path) %>">
+          <a href="<%= root_path %>" class="link-home nav-link">
+            <%= fa_icon("home") %>
+            <span class="d-none d-md-block"><%= t('header.home') %></span>
+          </a>
         </li>
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.username %>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to t('header.settings'), edit_user_registration_path, class: "dropdown-item" %>
-              <div class="dropdown-divider"></div>
-              <%= link_to t('header.sign_out'), destroy_user_session_path, method: :delete,
-                                      class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item <%= 'active' if current_page?(new_user_session_url) %>">
-            <%= link_to t('header.sign_in'), new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item <%= 'active' if current_page?(new_user_registration_url) %>">
-            <%= link_to t('header.sign_up'), new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-        <li class="lang-group nav-item">
-          <div class="nav-link">
-            <a href="?locale=en"><%= image_tag "lang_en.png", class: params[:locale] == "en" || params[:locale].nil? ? "lang active" : "lang" %></a>
-            <a href="?locale=fr"><%= image_tag "lang_fr.png", class: params[:locale] == "fr" ? "lang active" : "lang" %></a>
+        <li class="nav-item item-link">
+          <a href="#" class="link-home nav-link" style="font-size: 22px;position: relative; top: 4px;">
+            <%= fa_icon("bell") %>
+            <span class="d-none d-md-block">Notifications</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown ml-auto">
+          <a class="avatar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag current_user.gravatar_url, class: "header-avatar rounded-circle" %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to current_user.username, current_user, class: "dropdown-item"%>
+            <%= link_to t('header.settings'), edit_user_registration_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to t('header.sign_out'), destroy_user_session_path, method: :delete,
+                                    class: "dropdown-item" %>
           </div>
         </li>
-      </ul>
-    </div>
+      <% else %>
+        <li class="nav-item ml-auto"><%= link_to t('header.sign_in'), new_user_session_path, class: "nav-link" %></li>
+        <li class="nav-item ml-2"><%= link_to t('header.sign_up'), new_user_registration_path, class: "nav-link" %></li>
+      <% end %>
+      <li class="nav-item dropdown">
+        <a class="avatar-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <% if params[:locale] == "en" || params[:locale].nil? %>
+            <%= image_tag "lang_en.png", class: "lang" %>
+          <% else %>
+            <%= image_tag "lang_fr.png", class: "lang" %>
+          <% end %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a href="?locale=en" class="dropdown-item">
+            <%= image_tag "lang_en.png", class: "lang" %>
+          </a>
+          <a href="?locale=fr" class="dropdown-item">
+            <%= image_tag "lang_fr.png" , class: "lang"%>
+          </a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

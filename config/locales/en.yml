@@ -1,5 +1,6 @@
 en:
-  welcome: "Welcome !"
+  redirect:
+    login: "To visit this page, please log in or create an account."
   header:
     home: "Home"
     sign_in: "Log in"

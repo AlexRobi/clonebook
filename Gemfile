@@ -19,6 +19,8 @@ gem 'figaro'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 5.1'
 gem "font-awesome-rails"
+gem 'has_friendship'
+gem 'gravtastic'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

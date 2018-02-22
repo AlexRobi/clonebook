@@ -1,9 +1,11 @@
 fr:
-  welcome: "Bienvenue !"
+  redirect:
+    login: "Pour visiter cette page, connectez-vous ou créez un compte."
   header:
     home: "Accueil"
     sign_in: "Connexion"
     sign_up: "Inscription"
+    profile: "Profil"
     settings: "Options"
     sign_out: "Se déconnecter"
   edit_user:

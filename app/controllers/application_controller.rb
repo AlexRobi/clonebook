@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
- 
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
@@ -11,7 +11,13 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
-  protected
+  def user_logged_in
+    unless current_user
+      redirect_to new_user_session_path, notice: t('redirect.login')
+    end
+  end
+
+  private
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
