@@ -11,5 +11,9 @@ en:
   sign:
     forget: "Forgot your password ?"
     sign_in: "Sign in"
+    sign_up: "Create a New Account"
+    facebook: "Sign in with Facebook"
+    or: "or"
   edit_user:
     title: "Edit your account"
+    current_password: " (required)"

@@ -1,17 +1,27 @@
 <section id="editUser">
-  <div class="container text-center col-lg-6 col-xl-4 my-4">
+  <div class="container col-lg-6 col-xl-4 my-4">
     <h2><%= t('edit_user.title') %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :email %><br />
+        <%= f.label :username %>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><%= fa_icon "user" %></div>
+          </div>
+          <%= f.text_field :username, autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "envelope" %></div>
           </div>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
       </div>
 
@@ -20,20 +30,17 @@
       <% end %>
 
       <div class="form-group">
-        <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+        <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "lock" %></div>
           </div>
           <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         </div>
-          <% if @minimum_password_length %>
-            <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-          <% end %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation %>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "lock" %></div>
@@ -43,7 +50,7 @@
       </div>
 
       <div class="form-group">
-        <div class="label"><%= t('devise.form.current_password') %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i></div><br />
+        <div class="label"><%= t('devise.form.current_password') %><em class="font-weight-bold"><%= t('edit_user.current_password')%></em></div>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "lock" %></div>

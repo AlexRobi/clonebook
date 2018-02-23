@@ -17,5 +17,9 @@ fr:
   sign:
     forget: "Mot de passe oublié ?"
     sign_in: "Connexion"
+    sign_up: "Créer un compte"
+    facebook: "Connectez-vous avec Facebook"
+    or: "ou"
   edit_user:
     title: "Modifier votre compte"
+    current_password: " (obligatoire)"

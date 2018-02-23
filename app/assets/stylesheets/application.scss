@@ -1,27 +1,31 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 $primary-color: #1B95E0;
+$primary-color-hover: #1f70a2;
+$red-alert: #EC504C;
 
 /* misc */ 
 
 #error_explanation {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
+  color: $red-alert;
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   h2 {
     font-size: 1.1em;
+    color: $red-alert;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-weight: bold;
   }
 }
 
 .alert-alert {
   margin-top: 30px;
-  color: #721c24;
+  color: $red-alert;
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
@@ -40,24 +44,59 @@ $primary-color: #1B95E0;
   width: 1%;
   margin-bottom: 0;
   input {
-    border: 1px solid red;
+    border: 1px solid $red-alert;
   }
 }
 
 /* body */
-
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
   background: #F8F9FA;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 50px;
+  a {
+    color: $primary-color;
+    &:hover {
+      color: $primary-color-hover;
+      text-decoration: none;
+    }
+  }
+  h2 {
+    color: $primary-color;
+    border-bottom: 1px solid #CED4DA;
+    padding-bottom: 10px;
+    font-weight: bold;
+  }
+  .btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    font-weight: bold;
+    &:hover {
+      color: $primary-color-hover;
+    }
+  }
 }
 
 /* Header */
 
-nav {
+#header {
   background: #fff;
   -webkit-box-shadow: 0 .25rem .125rem 0 rgba(0,0,0,.05);
   box-shadow: 0 .25rem .125rem 0 rgba(0,0,0,.05);
   .nav {
     display: flex;
+    .navbar-brand {
+      font-size: 25px;
+      font-family: arial;
+      font-weight: bold;
+      color: $primary-color;
+      &:hover {
+        color: $primary-color-hover;
+      }
+    }
     .link-home {
       line-height: 1;
       font-size: 30px;
@@ -146,17 +185,67 @@ nav {
   }
 }
 
+/* Footer */
+
+footer {
+  background: #fff;
+  box-shadow: 0 -0.25rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  nav {
+    display: flex;
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+    .fa {
+      margin-right: 5px;
+      font-size: 1.6em;
+    }
+  }
+}
+
 /* Sign page */
 
 #sign {
+  .sign-facebook {
+    background: #3C66C4;
+    color: #fff;
+    padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    i {
+      margin-right: 20px;
+      font-size: 2.0em;
+    }
+  }
   .sign-form {
     display: flex;
     justify-content: center;
     div {
       margin-right: 10px;
     }
+    label {
+      margin-bottom: 0!important;
+      margin-top: 10px;
+    }
     .form-control {
       width: inherit;
+    }
+    .field_with_errors {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      margin-bottom: 0;
+      input {
+        border: 1px solid #CED4DA;
+      }
     }
   }
   .sign-form-xs {
@@ -168,6 +257,15 @@ nav {
     }
     .form-control {
       min-width: 100%;
+    }
+    .field_with_errors {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      margin-bottom: 0;
+      input {
+        border: 1px solid #CED4DA;
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <section id="newPassword">
-  <div class="container text-center col-lg-6 col-xl-4 my-4">
+  <div class="container col-lg-6 col-xl-4 my-4">
     <h2><%= t('.change_your_password') %></h2>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>

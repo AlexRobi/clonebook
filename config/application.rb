@@ -15,6 +15,6 @@ module Clonebook
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.available_locales = [:en, :fr]
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :fr
   end
 end
