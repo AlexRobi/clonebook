@@ -1,4 +1,9 @@
 fr:
+  activerecord:
+    attributes:
+      user:
+        username: "Nom d'utilisateur"
+        email: "E-mail"
   redirect:
     login: "Pour visiter cette page, connectez-vous ou créez un compte."
   header:
@@ -8,5 +13,9 @@ fr:
     profile: "Profil"
     settings: "Options"
     sign_out: "Se déconnecter"
+    post: "Créer une publication"
+  sign:
+    forget: "Mot de passe oublié ?"
+    sign_in: "Connexion"
   edit_user:
     title: "Modifier votre compte"

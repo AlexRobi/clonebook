@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def user_logged_in
     unless current_user
-      redirect_to new_user_session_path, notice: t('redirect.login')
+      redirect_to new_user_registration_path, notice: t('redirect.login')
     end
   end
 

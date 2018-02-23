@@ -1,6 +1,7 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import "font-awesome";
+$primary-color: #1B95E0;
 
 /* misc */ 
 
@@ -65,14 +66,22 @@ nav {
       flex-direction: row;
       align-items: center;
     }
+    .link-post {
+      a {
+        color: $primary-color;
+      }
+      &:hover {
+        border-bottom: none!important;
+      }
+    }
     .nav-link {
       padding: 5px 0;
       display: flex; 
       align-items: center;
     }
     .nav-item {
-      border-bottom: 3px solid transparent;
-      border-top: 3px solid transparent;
+      border-bottom: 2px solid transparent;
+      border-top: 2px solid transparent;
       align-items: center;
     }
     .item-link {
@@ -82,13 +91,13 @@ nav {
         margin-left: 8px;
       }
       &:hover {
-        border-bottom: 3px solid #ABB8C2;
+        border-bottom: 2px solid #1B95E0;
       }
     }
     .active {
-      border-bottom: 3px solid #ABB8C2;
+      border-bottom: 2px solid #1B95E0;
       .link-home {
-        color: #ABB8C2;
+        color: #1B95E0;
       }
     }
     .avatar-link {
@@ -102,12 +111,63 @@ nav {
     .dropdown {
       display: flex;
       a { color: #66757F; }
+      i { margin-right: 10px; }
+      .dropdown-header {
+        display: block;
+        font-size: 1.2em;
+        width: 100%;
+        padding: 0.25rem 1.5rem;
+        clear: both;
+        font-weight: bold;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        &:hover, &:active {
+          background-color: #fff!important;
+          color: #212529!important;
+          text-decoration: none;
+        }
+      }
+      .dropdown-item {
+        &:hover, &:active {
+          background-color: $primary-color;
+          color: #fff;
+        }
+      }
     }
     .dropdown-menu {
       min-width: inherit;
     }
     .lang {
       width: 20px;
+    }
+  }
+}
+
+/* Sign page */
+
+#sign {
+  .sign-form {
+    display: flex;
+    justify-content: center;
+    div {
+      margin-right: 10px;
+    }
+    .form-control {
+      width: inherit;
+    }
+  }
+  .sign-form-xs {
+    div {
+      margin-bottom: 10px;
+    }
+    label {
+      margin-bottom: 0!important;
+    }
+    .form-control {
+      min-width: 100%;
     }
   }
 }

@@ -19,12 +19,20 @@
             <%= image_tag current_user.gravatar_url, class: "header-avatar rounded-circle" %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to current_user.username, current_user, class: "dropdown-item"%>
-            <%= link_to t('header.settings'), edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to current_user.username, current_user, class: "dropdown-header"%>
+            <div class="dropdown-divider"></div>
+            <%= link_to fa_icon("user") + t('header.profile'), current_user, class: "dropdown-item"%>
+            <%= link_to fa_icon("cog") + t('header.settings'), edit_user_registration_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to t('header.sign_out'), destroy_user_session_path, method: :delete,
                                     class: "dropdown-item" %>
           </div>
+        </li>
+        <li class="nav-item item-link link-post">
+          <a href="<%= root_path %>" class="link-home nav-link">
+            <%= fa_icon("pencil") %>
+            <span class="d-none d-md-block"><%= t('header.post') %></span>
+          </a>
         </li>
       <% else %>
         <li class="nav-item ml-auto"><%= link_to t('header.sign_in'), new_user_session_path, class: "nav-link" %></li>
