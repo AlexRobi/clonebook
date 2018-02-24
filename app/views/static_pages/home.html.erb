@@ -1,4 +1,22 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-
-<h1><%= t('welcome') %></h1>
+<section id="home">
+  <div class="container">
+    <div class="user-info col-md-4">
+      <div class="text-center">
+        <%= image_tag current_user.gravatar_url, class: "rounded-circle" %>
+      </div>
+      <div class="text-center user-info__username">
+        <%= link_to current_user.username, current_user %>
+      </div>
+      <div class="user-info__stats">
+        <div>
+          <%= t('user_show.posts') %><br />
+          <i>WiP</i>
+        </div>
+        <div>
+          <%= t('user_show.friends') %><br />
+          <i>WiP</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

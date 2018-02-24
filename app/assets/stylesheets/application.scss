@@ -6,6 +6,15 @@ $primary-color: #1B95E0;
 $primary-color-hover: #1f70a2;
 $red-alert: #EC504C;
 
+/* breakpoints */
+
+@include media-breakpoint-down(md) { 
+  .container {
+    width: inherit;
+    max-width: inherit;
+  }
+ }
+
 /* misc */ 
 
 #error_explanation {
@@ -76,6 +85,40 @@ body {
     font-weight: bold;
     &:hover {
       color: $primary-color-hover;
+    }
+  }
+}
+
+/* Home */
+
+#home {
+  .user-info {
+    padding: 20px 0;
+    border: 1px solid #e6ecf0;
+    background: #fff;
+    .user-info__username {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin: 20px 0;
+      padding: 0 20px;
+      max-width: 100%;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      word-wrap: normal !important;
+      a {
+        color: black;
+      }
+    }
+    .user-info__stats {
+      display: flex;
+      justify-content: space-around;
+      color: #657786;
+      font-weight: bold;
+      i {
+        color: $primary-color;
+        font-style: inherit;
+      }
     }
   }
 }
@@ -266,6 +309,46 @@ footer {
       input {
         border: 1px solid #CED4DA;
       }
+    }
+  }
+}
+
+/* User show */
+
+#userNavbarMd {
+  .user__cover {
+    background: $primary-color;
+    height: 100px;
+    margin-top: 3px;
+  }
+  .user__nav-background {
+    background: #fff;
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    nav {
+      font-weight: bold;
+      .user-nav-btn {
+        background: #fff;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+        margin: 4px 16px;
+        padding: 4px 16px;
+        border-radius: 20px;
+        &:hover {
+          color: $primary-color-hover;
+          border: 1px solid $primary-color;
+        }
+      }
+      .active {
+        border-bottom: 2px solid #1B95E0;
+      }
+    }
+  }
+  .user__pp {
+    position: relative;
+    top: -130px;
+    .rounded-circle {
+      border: 5px solid #fff;
     }
   }
 }

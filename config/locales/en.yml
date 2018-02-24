@@ -17,3 +17,7 @@ en:
   edit_user:
     title: "Edit your account"
     current_password: " (required)"
+  user_navbar:
+    like: "Likes"
+    edit: "Edit profile"
+    add_friend: "Send a friend request"

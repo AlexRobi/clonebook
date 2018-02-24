@@ -23,3 +23,9 @@ fr:
   edit_user:
     title: "Modifier votre compte"
     current_password: " (obligatoire)"
+  user_navbar:
+    posts: "Publications"
+    friends: "Amis"
+    like: "J'aime"
+    edit: "Éditer le profil"
+    add_friend: "Envoyer une demande d'ami"
