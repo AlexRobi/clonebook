@@ -14,6 +14,17 @@
             <span class="d-none d-md-block">Notifications</span>
           </a>
         </li>
+        <li class="nav-item item-link <%= 'active' if current_page?(invitations_path) %>">
+          <a href="<%= invitations_path %>" class="link-home nav-link" style="font-size: 22px;position: relative; top: 4px;">
+            <%= fa_icon("user-plus") %>
+            <% if current_user.requested_friends.any? %>
+              <span class="badge badge-danger" style="font-size: 10px;margin-left: -10px;margin-top: -14px;">
+                <%= current_user.requested_friends.count %>
+              </span>
+            <% end %>
+            <span class="d-none d-md-block"><%= t('header.friend_requests') %></span>
+          </a>
+        </li>
         <li class="nav-item dropdown ml-auto">
           <a class="avatar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag current_user.gravatar_url, class: "header-avatar rounded-circle" %>
@@ -27,12 +38,6 @@
             <%= link_to t('header.sign_out'), destroy_user_session_path, method: :delete,
                                     class: "dropdown-item" %>
           </div>
-        </li>
-        <li class="nav-item item-link link-post">
-          <a href="<%= root_path %>" class="link-home nav-link">
-            <%= fa_icon("pencil") %>
-            <span class="d-none d-md-block"><%= t('header.post') %></span>
-          </a>
         </li>
       <% else %>
       <li class="mr-auto"><%= link_to "Clonebook", root_url, class: "navbar-brand" %></li>

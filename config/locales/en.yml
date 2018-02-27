@@ -21,3 +21,13 @@ en:
     like: "Likes"
     edit: "Edit profile"
     add_friend: "Send a friend request"
+    friend_request_sent: "Friend request sent"
+    respond_to: "Respond to the request"
+  invites:
+    empty: "No new friend requests"
+    respond_to: "Respond to your friend request"
+    confirm: "Confirm"
+    view_sent: "View sent requests"
+    accepeted_request: "You are now friend with "
+    delete_request: "Delete request"
+    waiting: "Pending"

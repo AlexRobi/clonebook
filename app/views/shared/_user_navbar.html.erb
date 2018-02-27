@@ -1,14 +1,14 @@
 <div id="userNavbarMd" class="d-none d-md-block">
   <div class="user__cover">
+    <div class="container">
+      <div class="col-10 ml-auto user__username"><%= @user.username %></div>
+    </div>
   </div>
 
   <div class="user__nav-background">
     <div class="user__nav container">
-      <nav class="ml-auto col-9">
+      <nav class="ml-auto col-10">
         <ul class="nav">
-          <li class="nav-item">
-            <span class="nav-link"><%= @user.username %></span>
-          </li>
           <li class="nav-item <%= 'active' if current_page?(@user) %>">
             <%= link_to t('user_navbar.posts'), @user, class: "nav-link" %>
           </li>
@@ -26,9 +26,22 @@
               <%= link_to t('user_navbar.edit'), edit_user_registration_path,
                                                 class: "nav-link user-nav-btn" %>
             <% else %>
-              <a class="nav-link user-nav-btn" href="#">
-                <%= t('user_navbar.add_friend') %>
-              </a>
+              <% if current_user.friends_with?(@user) %>
+                <%= link_to t('user_navbar.unfriend'), "friends/remove/#{@user.id}", 
+                                              method: :post, 
+                                              class: "nav-link user-nav-btn" %>
+              <% elsif @user.pending_friends.include?(current_user) %>
+                <%= link_to t('user_navbar.respond_to'), invitations_path, 
+                                              class: "nav-link user-nav-btn" %>
+              <% else %>
+                <% if current_user.pending_friends.include?(@user) %>
+                  <span class="nav-link user-nav-btn"><%= t('user_navbar.friend_request_sent') %></span>
+                <% else %>
+                  <%= link_to t('user_navbar.add_friend'), send_request_path,
+                                                          method: :post,
+                                                          class: "nav-link user-nav-btn" %>
+                <% end %>
+              <% end %>
             <% end %>
           </li>
         </ul>
@@ -36,12 +49,54 @@
     </div>
   </div>
   <div class="container">
-    <div class="user__pp col-3">
-      <%= image_tag @user.gravatar_url, class: "rounded-circle" %>
+    <div class="user__pp col-2">
+      <%= image_tag @user.gravatar_url, class: "avatar w-100" %>
     </div>
   </div>
 </div>
 
 <div id="userNavbarXs" class="d-md-none">
-work in progress
+  <div class="user__cover">
+  </div>
+  <div class="text-center user__pp-container">
+    <div class="user_pp text-center d-inline-block">
+      <%= image_tag @user.gravatar_url, class: "avatar" %>
+      <div class="user__username"><%= @user.username %></div>
+    </div>
+  </div>
+  <nav class="">
+    <ul class="">
+      <li class="<%= 'active' if current_page?(@user) %>" style="border-top: 1px solid #EDEEEF;">
+        <%= link_to t('user_navbar.posts'), @user %>
+      </li>
+      <li class="<%= 'active' if current_page?(user_friends_path) %>">
+        <%= link_to t('user_navbar.friends'), user_friends_path %>
+      </li>
+      <li>
+        <a href="#">
+          <%= t('user_navbar.like') %>
+        </a>
+      </li>
+      <li class="text-center px-0">
+        <% if @user == current_user %>
+          <%= link_to t('user_navbar.edit'), edit_user_registration_path,
+                                            class: "user-nav-btn" %>
+        <% else %>
+          <% if current_user.friends_with?(@user) %>
+            <%= link_to "Remove Friend", "friends/remove/#{@user.id}", 
+                                          method: :post,
+                                          class: "user-nav-btn" %>
+          <% else %>
+            <% if current_user.pending_friends.include?(@user) %>
+              <span class="user-nav-btn"><%= t('user_navbar.friend_request_sent') %></span>
+            <% else %>
+              <%= link_to t('user_navbar.add_friend'), send_request_path,
+                                                      method: :post,
+                                                      class: "user-nav-btn" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
 </div>

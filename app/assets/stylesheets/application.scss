@@ -5,6 +5,7 @@
 $primary-color: #1B95E0;
 $primary-color-hover: #1f70a2;
 $red-alert: #EC504C;
+$box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 
 /* breakpoints */
 
@@ -12,6 +13,11 @@ $red-alert: #EC504C;
   .container {
     width: inherit;
     max-width: inherit;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  nav {
+    font-size: 0.9em;
   }
  }
 
@@ -94,7 +100,7 @@ body {
 #home {
   .user-info {
     padding: 20px 0;
-    border: 1px solid #e6ecf0;
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
     background: #fff;
     .user-info__username {
       font-weight: bold;
@@ -127,10 +133,9 @@ body {
 
 #header {
   background: #fff;
-  -webkit-box-shadow: 0 .25rem .125rem 0 rgba(0,0,0,.05);
-  box-shadow: 0 .25rem .125rem 0 rgba(0,0,0,.05);
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   .nav {
-    display: flex;
+    display: flex;    
     .navbar-brand {
       font-size: 25px;
       font-family: arial;
@@ -321,12 +326,23 @@ footer {
     height: 100px;
     margin-top: 3px;
   }
+  .user__username {
+    padding-left: 31px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    top: 55px;
+  }
   .user__nav-background {
     background: #fff;
-    border-top: 1px solid #E5E5E5;
-    border-bottom: 1px solid #E5E5E5;
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+    .user__nav {
+      padding-right: 0;
+    }
     nav {
       font-weight: bold;
+      padding-right: 0;
       .user-nav-btn {
         background: #fff;
         border: 1px solid $primary-color;
@@ -345,10 +361,118 @@ footer {
     }
   }
   .user__pp {
-    position: relative;
-    top: -130px;
-    .rounded-circle {
+    margin-top: -125px;
+    .avatar {
       border: 5px solid #fff;
+      box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+    }
+  }
+}
+
+#userNavbarXs {
+  background: #fff;
+  box-shadow: $box-shadow-custom1;
+  .user__cover {
+    background: $primary-color;
+    height: 100px;
+    margin-top: 3px;
+  }
+  .user__pp-container {
+    background: #fff;
+    .user_pp {
+      padding: 20px 20px 10px 20px;
+      font-weight: bold;
+      margin-top: -105px;
+      .avatar {
+        box-shadow: $box-shadow-custom1;
+        border: 3px solid #fff;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  nav {
+    ul {
+      margin-top: 10px;
+      padding: inherit;
+      list-style: none;
+      .user-nav-btn {
+        background: #fff;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+        padding: 4px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9em;
+        &:hover {
+          color: $primary-color-hover;
+          border: 1px solid $primary-color;
+        }
+      }
+      li {
+        border-bottom: 1px solid #EDEEEF;
+        padding: 10px 0px 10px 20px;
+        a {
+          font-weight: bold;
+        }
+      }
+      .active {
+        background: $primary-color;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+#invitesIndex {
+  .invites {
+    background: #fff;
+    box-shadow: $box-shadow-custom1;
+    margin-top: 20px;
+    padding: 0px;
+    h5 {
+      padding: 20px 30px 0 30px;
+      font-weight: bold;
+      font-size: 1em;
+      margin-bottom: inherit;
+    }
+    .pending {
+      border-bottom: 1px solid #E9E9E9;
+      padding: 0 30px 30px 30px ;
+      .ml-auto {
+        margin-right: 30px;
+      }
+    }
+    .invite {
+      border-top: 1px solid #E9E9E9;
+      padding: 20px 0;
+      margin: -1px 30px 0 30px;
+      display: flex;
+      align-items: center;
+      .invite__pp {
+        img {
+          width: 75px;
+        }
+      }
+      .invite__username {
+        margin-left: 15px;
+        color: $primary-color;
+        font-weight: bold;
+      }
+      .btn {
+        margin: 0 5px;
+        font-weight: bold;
+      }
+      .btn-primary {
+        background: $primary-color;
+        &:hover {
+          background: $primary-color-hover;
+        }
+      }
+      .btn-decline {
+        color: #B2BDCB;
+      }
     }
   }
 }

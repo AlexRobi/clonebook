@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Clonebook</title>
+    <title>
+      <% if user_signed_in? %>
+        <%= "(#{current_user.requested_friends.count}) Clonebook" %>
+      <% else %>
+        Clonebook
+      <% end %>
+    </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
