@@ -41,3 +41,6 @@ fr:
     view_sent: "Afficher les invitations envoyées"
     accepeted_request: "Vous êtes maintenant ami avec "
     waiting: "En attente"
+  friends: 
+    title: "Amis"
+    no_friend: "Rien à afficher dans la catégorie amis"

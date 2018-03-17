@@ -13,11 +13,8 @@ $box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   .container {
     width: inherit;
     max-width: inherit;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  nav {
-    font-size: 0.9em;
+    padding-left: 10px;
+    padding-right: 10px;
   }
  }
 
@@ -444,12 +441,34 @@ footer {
         margin-right: 30px;
       }
     }
+    @include media-breakpoint-down(md) { 
+      .invite {
+        display: flex; 
+        flex-direction: column;
+      }
+      .btn-primary {
+        margin: inherit!important;
+        margin-top: 10px!important;
+      }
+      .invite__username {
+        margin-left: 0px!important;
+      }
+      .invite__pending {
+        margin-left: 0px!important;
+      }
+    }
     .invite {
       border-top: 1px solid #E9E9E9;
       padding: 20px 0;
       margin: -1px 30px 0 30px;
       display: flex;
       align-items: center;
+      .invite__pending {
+        margin-left: auto;
+        color: #B2BDCB;
+        font-weight: bold;
+        padding: 6px 20px;
+      }
       .invite__pp {
         img {
           width: 75px;
@@ -465,6 +484,7 @@ footer {
         font-weight: bold;
       }
       .btn-primary {
+        margin-left: auto;
         background: $primary-color;
         &:hover {
           background: $primary-color-hover;
@@ -472,6 +492,73 @@ footer {
       }
       .btn-decline {
         color: #B2BDCB;
+      }
+    }
+  }
+}
+
+#friendsIndex {
+  .friend-container {
+    background: #fff;
+    box-shadow: $box-shadow-custom1;
+    h5 {
+      background: #F6F7F9;
+      border-bottom: 1px solid #D3D6DB;
+      span {
+        color: #ADB3BC;
+      }
+    }
+    .no-friend {
+      color: #bbbbbb;
+      margin: auto;
+      font-weight: bold;
+    }
+    @include media-breakpoint-down(md) { 
+      .friend {
+        display: flex;
+        flex-direction: column;
+        align-items: inherit;
+        .nav-link {
+          margin-left: inherit!important;
+        }
+        img {
+          margin-top: 8px;
+        }
+        .friend__username {
+          width:90%;
+          display: flex;
+          justify-content: center;
+          margin-left: inherit!important;
+          overflow: hidden !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
+          word-wrap: normal !important;
+        }
+      }
+    }
+    .friend {
+      display: flex;
+      align-items: center;
+      border: 1px solid #E9EBEE;
+      padding: 0px;
+      margin-bottom: 10px;
+      .friend__username {
+        width: 150px;
+        margin-left: 10px;
+        font-weight: bold;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        word-wrap: normal !important;
+        a {
+          color: $primary-color;
+        }
+      }
+      .nav-link {
+        margin-left: auto;
+      }
+      img { 
+        width: 75px;
       }
     }
   }

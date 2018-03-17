@@ -1,3 +1,36 @@
 <section id="friendsIndex">
   <%= render 'shared/user_navbar' %>
+
+  <div class="container friend-container">
+  <h5><%= fa_icon "users" %><%= t('friends.title') %></h5>
+    <div class="row">
+      <% if @user.friends.any? %>
+        <% @user.friends.each do |friend| %>
+            <div class="friend col-6 col-12">
+              <%= image_tag friend.gravatar_url %>
+              <%= link_to friend.username, friend, class: "friend__username" %>
+              <% if current_user.friends_with?(friend) %>
+                <%= link_to t('user_navbar.unfriend'), "friends/remove/#{friend.id}", 
+                                                    method: :post, 
+                                                    class: "nav-link user-nav-btn" %>
+              <% elsif current_user == friend %>
+
+              <% elsif current_user.pending_friends.include?(friend) %>
+                <%= link_to t('user_navbar.respond_to'), invitations_path, 
+                                                    class: "nav-link user-nav-btn" %>
+              <% elsif friend.pending_friends.include?(current_user) %>
+                <%= link_to t('user_navbar.respond_to'), invitations_path, 
+                                          class: "nav-link user-nav-btn" %>
+              <% else %>
+                <%= link_to t('user_navbar.add_friend'), send_request_path,
+                                                            method: :post,
+                                                            class: "nav-link user-nav-btn" %>
+              <% end %>
+            </div>
+        <% end %>
+      <% else %>
+        <div class="no-friend"><%= t('friends.no_friend') %></div>
+      <% end %>
+    </div>
+  </div>
 </section>
