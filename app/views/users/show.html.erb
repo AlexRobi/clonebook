@@ -1,4 +1,6 @@
 <section id="userShow">
-
   <%= render 'shared/user_navbar' %>
+  <% flash.each do |key, value| %>
+    <%= content_tag :div, value, class: "alert alert-#{key} container" %>
+  <% end %>
 </section>

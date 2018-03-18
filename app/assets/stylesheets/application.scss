@@ -9,7 +9,7 @@ $box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 
 /* breakpoints */
 
-@include media-breakpoint-down(md) { 
+@include media-breakpoint-down(md) {
   .container {
     width: inherit;
     max-width: inherit;
@@ -18,7 +18,7 @@ $box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   }
  }
 
-/* misc */ 
+/* misc */
 
 #error_explanation {
   color: $red-alert;
@@ -35,14 +35,17 @@ $box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   }
 }
 
-.alert-alert {
+.alert {
   margin-top: 30px;
+  margin-bottom: 30px!important;
+}
+
+.alert-alert {
   color: $red-alert;
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
 .alert-notice {
-  margin-top: 30px;
   color: #856404;
   background-color: #fff3cd;
   border-color: #ffeeba;
@@ -132,7 +135,7 @@ body {
   background: #fff;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   .nav {
-    display: flex;    
+    display: flex;
     .navbar-brand {
       font-size: 25px;
       font-family: arial;
@@ -146,7 +149,7 @@ body {
       line-height: 1;
       font-size: 30px;
       color: #66757F;
-      display: flex; 
+      display: flex;
       flex-direction: row;
       align-items: center;
     }
@@ -160,7 +163,7 @@ body {
     }
     .nav-link {
       padding: 5px 0;
-      display: flex; 
+      display: flex;
       align-items: center;
     }
     .nav-item {
@@ -423,6 +426,11 @@ footer {
 }
 
 #invitesIndex {
+  .no-invites {
+    color: #adb3bc;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
   .invites {
     background: #fff;
     box-shadow: $box-shadow-custom1;
@@ -441,9 +449,9 @@ footer {
         margin-right: 30px;
       }
     }
-    @include media-breakpoint-down(md) { 
+    @include media-breakpoint-down(md) {
       .invite {
-        display: flex; 
+        display: flex;
         flex-direction: column;
       }
       .btn-primary {
@@ -452,6 +460,8 @@ footer {
       }
       .invite__username {
         margin-left: 0px!important;
+        width: 90%;
+        text-align: center;
       }
       .invite__pending {
         margin-left: 0px!important;
@@ -478,6 +488,10 @@ footer {
         margin-left: 15px;
         color: $primary-color;
         font-weight: bold;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        word-wrap: normal !important;
       }
       .btn {
         margin: 0 5px;
@@ -498,68 +512,83 @@ footer {
 }
 
 #friendsIndex {
+  h5 {
+    background: #f6f7f9;
+    border-bottom: 1px solid #ced0d4;
+    color: #4b4f6a;
+    font-weight: bold;
+    padding: 15px;
+    margin: 50px -15px 0px -15px;
+    i {
+      color: #adb3bc;
+      margin-right: 10px;
+    }
+    span {
+      font-weight: normal;
+      color: #90949c;
+    }
+  }
   .friend-container {
-    background: #fff;
     box-shadow: $box-shadow-custom1;
-    h5 {
-      background: #F6F7F9;
-      border-bottom: 1px solid #D3D6DB;
-      span {
-        color: #ADB3BC;
-      }
-    }
-    .no-friend {
-      color: #bbbbbb;
-      margin: auto;
-      font-weight: bold;
-    }
-    @include media-breakpoint-down(md) { 
+  }
+  .row {
+    background: #ffffff;
+    padding-top: 20px;
+    @include media-breakpoint-down(md) {
       .friend {
-        display: flex;
+        max-width: 95%!important;
+        flex: 0 0 95%!important;
         flex-direction: column;
-        align-items: inherit;
-        .nav-link {
-          margin-left: inherit!important;
-        }
-        img {
-          margin-top: 8px;
+        justify-content: center;
+        .btn-friend, .friend__username {
+          margin: 0 0 10px 0!important;
+          text-align: center;
         }
         .friend__username {
-          width:90%;
-          display: flex;
-          justify-content: center;
-          margin-left: inherit!important;
-          overflow: hidden !important;
-          text-overflow: ellipsis !important;
-          white-space: nowrap !important;
-          word-wrap: normal !important;
+          width: 90%!important;
+        }
+        img {
+          margin: 10px 0!important;
         }
       }
     }
     .friend {
+      border: 1px solid #e9ebee;
+      margin-bottom: 20px;
+      padding: 0;
       display: flex;
       align-items: center;
-      border: 1px solid #E9EBEE;
-      padding: 0px;
-      margin-bottom: 10px;
+      flex: 0 0 48%;
+      max-width: 48%;
+      a {
+        color: $primary-color;
+        &:hover {
+          color: $primary-color-hover;
+        }
+      }
       .friend__username {
-        width: 150px;
-        margin-left: 10px;
-        font-weight: bold;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         white-space: nowrap !important;
         word-wrap: normal !important;
-        a {
-          color: $primary-color;
-        }
+        display: block;
+        width: 30%;
+        margin-left: 15px;
+        font-weight: bold;
+        color: $primary-color;
       }
-      .nav-link {
+      .btn-friend {
+        margin-right: 15px;
         margin-left: auto;
       }
-      img { 
+      img {
         width: 75px;
       }
     }
+  }
+  .no-friend {
+    color: #adb3bc;
+    font-weight: bold;
+    margin-bottom: 20px;
   }
 }

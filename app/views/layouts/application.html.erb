@@ -3,7 +3,11 @@
   <head>
     <title>
       <% if user_signed_in? %>
-        <%= "(#{current_user.requested_friends.count}) Clonebook" %>
+        <% if current_user.requested_friends.any? %>
+         <%= "(#{current_user.requested_friends.count}) Clonebook" %>
+        <% else %>
+          Clonebook
+        <% end %>
       <% else %>
         Clonebook
       <% end %>
@@ -17,9 +21,6 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% flash.each do |key, value| %>
-      <%= content_tag :div, value, class: "alert alert-#{key} container" %>
-    <% end %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>

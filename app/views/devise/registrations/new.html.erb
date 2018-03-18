@@ -4,7 +4,11 @@
 
 <section id="sign" class="py-5">
   <div class="container col-lg-6 col-xl-4">
-    
+
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "alert alert-#{key} container" %>
+    <% end %>
+
     <div class="text-center">
       <%= link_to user_facebook_omniauth_authorize_path, class: "sign-facebook" do %>
         <%= fa_icon "facebook" %><%= t('sign.facebook') %>
@@ -24,7 +28,7 @@
 
         <div>
           <%= f.password_field :password, placeholder: true,
-                                          autocomplete: "off", 
+                                          autocomplete: "off",
                                           class: "form-control" %>
           <% if devise_mapping.rememberable? -%>
             <div>
@@ -50,13 +54,13 @@
 
         <div>
           <%= f.password_field :password, placeholder: true,
-                                          autocomplete: "off", 
+                                          autocomplete: "off",
                                           class: "form-control" %>
         </div>
 
         <span style="display:flex;align-items: center;">
           <%= f.submit t('sign.sign_in'), class: "btn btn-primary" %>
-        
+
           <% if devise_mapping.rememberable? -%>
             <span style="margin: 0 10px;">
               <%= f.check_box :remember_me %>
@@ -79,7 +83,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "user" %></div>
           </div>
-          <%= f.text_field :username, autocus: true, 
+          <%= f.text_field :username, autocus: true,
                                autocomplete: "off", class: "form-control",
                                placeholder: true %>
         </div>
@@ -118,7 +122,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "lock" %></div>
           </div>
-          <%= f.password_field :password_confirmation, autocomplete: "off", 
+          <%= f.password_field :password_confirmation, autocomplete: "off",
                                                        class: "form-control",
                                                        placeholder: true %>
         </div>

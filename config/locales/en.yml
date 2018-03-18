@@ -31,6 +31,10 @@ en:
     accepeted_request: "You are now friend with "
     delete_request: "Delete request"
     waiting: "Pending"
-  friends: 
+    no-invites: "No friend request to show"
+  friends:
     title: "Friends"
     no_friend: "No friends to show"
+    remove: "have been removed from your friends"
+    add: "and you are now friend"
+    send: "You have sent a friend request to"

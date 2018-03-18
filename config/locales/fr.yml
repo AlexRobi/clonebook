@@ -33,7 +33,7 @@ fr:
     friend_request_sent: "Invitation envoyée"
     unfriend: "Retirer de la liste d'amis"
     respond_to: "Répondre à la demande d'ami"
-  invites: 
+  invites:
     empty: "Aucune nouvelle invitation"
     respond_to: "Répondre à la demande d'ajout à la liste d'amis"
     confirm: "Confirmer"
@@ -41,6 +41,10 @@ fr:
     view_sent: "Afficher les invitations envoyées"
     accepeted_request: "Vous êtes maintenant ami avec "
     waiting: "En attente"
-  friends: 
+    no-invites: "Rien à afficher dans la catégorie invitations"
+  friends:
     title: "Amis"
     no_friend: "Rien à afficher dans la catégorie amis"
+    remove: "a été retiré de votre liste d'amis"
+    add: "et vous êtes désormais ami"
+    send: "Vous avez envoyé une invitation à"
