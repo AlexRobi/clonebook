@@ -1,29 +1,58 @@
 <% provide(:title, "Clonebook") %>
 
-<section id="home">
+<section id="home" class="py-4">
   <div class="container">
 
     <% flash.each do |key, value| %>
       <%= content_tag :div, value, class: "alert alert-#{key} container" %>
     <% end %>
+    <div class="row">
+      <div class="user-info col-md-4">
+        <div class="text-center">
+          <%= image_tag current_user.gravatar_url, class: "rounded-circle" %>
+        </div>
+        <div class="text-center user-info__username">
+          <%= link_to current_user.username, current_user %>
+        </div>
+        <div class="user-info__stats">
+          <div>
+            <%= t('user_show.posts') %><br />
+            <i>WiP</i>
+          </div>
+          <div>
+            <%= t('user_show.friends') %><br />
+            <i>WiP</i>
+          </div>
+        </div>
+      </div>
 
-    <div class="user-info col-md-4">
-      <div class="text-center">
-        <%= image_tag current_user.gravatar_url, class: "rounded-circle" %>
-      </div>
-      <div class="text-center user-info__username">
-        <%= link_to current_user.username, current_user %>
-      </div>
-      <div class="user-info__stats">
-        <div>
-          <%= t('user_show.posts') %><br />
-          <i>WiP</i>
-        </div>
-        <div>
-          <%= t('user_show.friends') %><br />
-          <i>WiP</i>
-        </div>
+      <div class="col-md-8">
+        <%= form_for(@post) do |f| %>
+          <%= f.text_field :body %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit "Create post" %>
+        <% end %>
       </div>
     </div>
+
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class="col-md-8 ml-auto post my-3">
+          <div><%= post.user.username %></div>
+          <div><%= post.body %></div>
+          <div>-----COMMENT------</div>
+          <%= form_for(@comment) do |f| %>
+            <%= f.text_field :body %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.submit "comment" %>
+          <% end %>
+          <% post.comments.each do |comment| %>
+            <div><%= comment.user.username %></div>
+            <div><%= comment.body %></div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </section>

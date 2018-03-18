@@ -16,7 +16,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :email %>
+        <%= f.label :email %><%= link_to " (#{t('privacy')})", privacy_policy_path %>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "envelope" %></div>
