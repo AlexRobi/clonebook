@@ -1,4 +1,10 @@
 en:
+  activerecord:
+    attributes:
+      post:
+        body: "What's on your mind?"
+      comment:
+        body: "Comment this publication..."
   redirect:
     login: "To visit this page, please log in or create an account."
   header:
@@ -8,6 +14,12 @@ en:
     settings: "Settings"
     sign_out: "Sign out"
     post: "Make Post"
+  home:
+    btn-post: "Post"
+    posted_at: "Posted "
+  post:
+    likes: "Likes"
+    comments: "Comments"
   sign:
     forget: "Forgot your password ?"
     sign_in: "Sign in"

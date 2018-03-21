@@ -11,12 +11,11 @@ $box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 
 @include media-breakpoint-down(md) {
   .container {
-    width: inherit;
-    max-width: inherit;
-    padding-left: 10px;
-    padding-right: 10px;
+    max-width: inherit!important;
+    min-width: inherit!important;
+    padding: 0!important;
   }
- }
+}
 
 /* misc */
 
@@ -98,10 +97,148 @@ body {
 /* Home */
 
 #home {
+  padding: 20px;
+  @include media-breakpoint-down(sm) {
+    .post__form {
+      max-width: 100%!important;
+      flex: 0 0 100%!important;
+      padding: 10px!important;
+      height: 140px!important;
+      img {
+        width: 30px!important;
+        margin-right: 5px!important;
+      }
+    }
+  }
+  .post__form {
+    flex: 0 0 72%;
+    max-width: 72%;
+    padding: 10px;
+    height: 155px;
+    background: #fff;
+    box-shadow: $box-shadow-custom1;
+    form {
+      width: 1000px;
+    }
+    .form-control {
+      border: 1px solid $primary-color;
+    }
+    .btn {
+      background: $primary-color;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+      &:hover {
+        background: $primary-color-hover;
+      }
+    }
+    img {
+      width: 40px;
+      margin-right: 10px;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .feed {
+      max-width: 100%!important;
+      flex: 0 0 100%!important;
+      margin-top: 20px!important;
+    }
+  }
+  .feed {
+    flex: 0 0 72%;
+    max-width: 72%;
+    margin-top: -97px;
+    .post {
+      background: #fff;
+      box-shadow: $box-shadow-custom1;
+      margin-bottom: 20px;
+      padding: 10px;
+      .post__header {
+        display: flex;
+        align-items: center;
+        img {
+          width: 45px;
+          margin-right: 10px;
+        }
+        .post__header__username {
+          color: $primary-color;
+          font-weight: bold;
+        }
+        .post__header__posted-at {
+          font-size: 12px;
+          color: #6f6b70;
+        }
+      }
+      .post__footer {
+        display: flex;
+        justify-content: space-between;
+        color: #898f9c;
+        font-size: 14px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .post__btn {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 7px;
+      }
+    }
+    .comment-container {
+      background: #f2f3f5;
+      margin: -10px;
+      margin-top: 10px;
+      padding: 10px;
+      border-top: 1px solid #e1e2e3;
+      font-size: 0.9em;
+      img {
+        width: 35px;
+        margin-right: 10px;
+      }
+      form {
+        width: 1000px;
+        .form-control {
+          border-radius: 20px!important;
+        }
+        .btn {
+          float: right;
+          background: $primary-color;
+          color: white;
+          font-weight: bold;
+          margin-top: 10px;
+          padding: 0 10px!important;
+          &:hover {
+            background: $primary-color-hover;
+          }
+        }
+      }
+      .comment {
+        display: flex;
+        margin-bottom: 10px;
+        img {
+          width: 35px;
+          margin-right: 10px;
+        }
+        .comment__body {
+          background: #fff;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
+          padding-right: 10px;
+          .comment__username {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
   .user-info {
-    padding: 20px 0;
+    padding: 15px;
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
     background: #fff;
+    img {
+      width: 125px;
+    }
     .user-info__username {
       font-weight: bold;
       font-size: 1.2em;

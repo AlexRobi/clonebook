@@ -4,8 +4,21 @@ fr:
       user:
         username: "Nom d'utilisateur"
         email: "E-mail"
+      post:
+        body: "Quoi de neuf ?"
+      comment:
+        body: "Commentez cette publication..."
   redirect:
     login: "Pour visiter cette page, connectez-vous ou créez un compte."
+  home:
+    btn-post: "Publier"
+    posted_at: "Publié il y a "
+  post:
+    likes: "J'aime"
+    comments: "Commentaires"
+  user-info:
+    friends: "Amis"
+    posts: "Publications"
   header:
     home: "Accueil"
     sign_in: "Connexion"

@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   def home
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def notifications
