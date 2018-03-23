@@ -10,16 +10,19 @@
       <nav class="ml-auto col-10">
         <ul class="nav">
           <li class="nav-item <%= 'active' if current_page?(@user) %>">
-            <%= link_to t('user_navbar.posts'), @user, class: "nav-link" %>
+            <%= link_to @user, class: "nav-link" do %>
+              <%= t('user_navbar.posts')%> (<%= @user.posts.count %>)
+            <% end %>
           </li>
           <li class="nav-item <%= 'active' if current_page?(user_friends_path) %>">
-            <%= link_to t('user_navbar.friends'), user_friends_path, 
-                                                class: "nav-link" %>
+            <%= link_to user_friends_path, class: "nav-link" do %>
+              <%= t('user_navbar.friends') %> (<%= @user.friends.count %>)
+            <% end %>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <%= t('user_navbar.like') %>
-            </a>
+          <li class="nav-item <%= 'active' if current_page?(liked_posts_path(@user)) %>">
+            <%= link_to liked_posts_path(@user), class: "nav-link" do %>
+              <%= t('user_navbar.like') %> (<%= @user.get_voted(Post).count %>)
+            <% end %>
           </li>
           <li class="nav-item">
             <% if @user == current_user %>
@@ -27,11 +30,11 @@
                                                 class: "nav-link user-nav-btn" %>
             <% else %>
               <% if current_user.friends_with?(@user) %>
-                <%= link_to t('user_navbar.unfriend'), "friends/remove/#{@user.id}", 
-                                              method: :post, 
+                <%= link_to t('user_navbar.unfriend'), friend_remove_path(@user),
+                                              method: :post,
                                               class: "nav-link user-nav-btn" %>
               <% elsif @user.pending_friends.include?(current_user) %>
-                <%= link_to t('user_navbar.respond_to'), invitations_path, 
+                <%= link_to t('user_navbar.respond_to'), invitations_path,
                                               class: "nav-link user-nav-btn" %>
               <% else %>
                 <% if current_user.pending_friends.include?(@user) %>
@@ -56,6 +59,7 @@
 </div>
 
 <div id="userNavbarXs" class="d-md-none">
+
   <div class="user__cover">
   </div>
   <div class="text-center user__pp-container">
@@ -64,26 +68,38 @@
       <div class="user__username"><%= @user.username %></div>
     </div>
   </div>
-  <nav class="">
-    <ul class="">
-      <li class="<%= 'active' if current_page?(@user) %>" style="border-top: 1px solid #EDEEEF;">
-        <%= link_to t('user_navbar.posts'), @user %>
-      </li>
-      <li class="<%= 'active' if current_page?(user_friends_path) %>">
-        <%= link_to t('user_navbar.friends'), user_friends_path %>
-      </li>
-      <li>
-        <a href="#">
-          <%= t('user_navbar.like') %>
-        </a>
-      </li>
-      <li class="text-center px-0">
+
+  <div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <% if current_page?(@user) %>
+        <%= t('user_navbar.posts') %>
+      <% elsif current_page?(user_friends_path) %>
+        <%= t('user_navbar.friends') %>
+      <% elsif current_page?(liked_posts_path(@user))%>
+        <%= t('user_navbar.like') %>
+      <% end %>
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <%= link_to @user, class: "dropdown-item" do %>
+        <%= t('user_navbar.posts')%> (<%= @user.posts.count %>)
+      <% end %>
+      <div class="dropdown-divider"></div>
+      <%= link_to user_friends_path, class: "dropdown-item" do %>
+        <%= t('user_navbar.friends') %> (<%= @user.friends.count %>)
+      <% end %>
+      <div class="dropdown-divider"></div>
+      <%= link_to liked_posts_path(@user), class: "dropdown-item" do %>
+        <%= t('user_navbar.like') %> (<%= @user.get_voted(Post).count %>)
+      <% end %>
+      <div class="dropdown-divider"></div>
+      <div class="text-center">
         <% if @user == current_user %>
           <%= link_to t('user_navbar.edit'), edit_user_registration_path,
                                             class: "user-nav-btn" %>
         <% else %>
           <% if current_user.friends_with?(@user) %>
-            <%= link_to "Remove Friend", "friends/remove/#{@user.id}", 
+            <%= link_to "Remove Friend", friend_remove_path(@user),
                                           method: :post,
                                           class: "user-nav-btn" %>
           <% else %>
@@ -91,12 +107,12 @@
               <span class="user-nav-btn"><%= t('user_navbar.friend_request_sent') %></span>
             <% else %>
               <%= link_to t('user_navbar.add_friend'), send_request_path,
-                                                      method: :post,
-                                                      class: "user-nav-btn" %>
+                                                        method: :post,
+                                                        class: "user-nav-btn" %>
             <% end %>
           <% end %>
         <% end %>
-      </li>
-    </ul>
-  </nav>
+      </div>
+    </div>
+  </div>
 </div>

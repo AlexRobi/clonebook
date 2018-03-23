@@ -3,7 +3,8 @@ class StaticPagesController < ApplicationController
   def home
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.all.order(created_at: :desc)
+    friend_ids = current_user.friend_ids
+    @posts = Post.where("user_id IN (?) OR user_id = ?", friend_ids, current_user.id).order(created_at: :desc).paginate(:page => params[:page], :per_page => 15)
   end
 
   def notifications

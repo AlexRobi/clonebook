@@ -1,0 +1,81 @@
+<div class="ml-auto feed">
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="ml-auto post">
+        <div class="post__header">
+          <%= link_to post.user do %>
+            <%= image_tag post.user.gravatar_url, class: "rounded-circle" %>
+          <% end %>
+          <div>
+            <%= link_to post.user.username, post.user,
+              class: "post__header__username" %>
+            <div class="post__header__posted-at">
+              <%= t('home.posted_at') %>
+              <%= time_ago_in_words(post.created_at) %>
+              <% if params[:locale] == "en" %>
+                <span>ago</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="post__body">
+          <%= post.body %>
+        </div>
+        <div class="post__footer">
+          <div>
+            <% if post.get_likes.size == 1 %>
+              <%= post.get_likes.size %>
+              <%= t('post.like') %>
+            <% else %>
+              <%= post.get_likes.size %>
+              <%= t('post.likes') %>
+            <% end %>
+          </div>
+          <div><%= post.comments.count %> <%= t('post.comments') %></div>
+        </div>
+        <div class="post__btn">
+          <div>
+            <% if current_user.voted_as_when_voted_for(post) %>
+              <%= link_to post_unliked_path(post), method: :post do %>
+                <%= fa_icon "heart" %> <%= t('post.unliked') %>
+              <% end %>
+            <% else %>
+              <%= link_to post_liked_path(post), method: :post do %>
+                <%= fa_icon "heart" %> <%= t('post.liked') %>
+              <% end %>
+            <% end %>
+          </div>
+          <a class="" data-toggle="collapse" href="#collapse<%= post.id %>"
+              role="button" aria-expanded="false" aria-controls="collapseExample">
+            <%= fa_icon "comment" %> <%= t('post.comments') %>
+          </a>
+        </div>
+        <div class="collapse comment-container" id="collapse<%= post.id %>">
+          <div class="d-flex">
+            <div><%= image_tag current_user.gravatar_url, class: "rounded-circle" %></div>
+            <%= form_for(@comment) do |f| %>
+              <%= f.text_field :body, placeholder: true, class: "form-control" %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :post_id, value: post.id %>
+              <%= f.submit t('home.btn-post'), class: "btn" %>
+            <% end %>
+          </div>
+          <% post.comments.each do |comment| %>
+            <div class="comment">
+              <div><%= image_tag comment.user.gravatar_url, class: "rounded-circle" %></div>
+              <div class="comment__body">
+                <div>
+                  <%= link_to comment.user.username, comment.user,
+                    class: "comment__username" %>
+                  <span>&nbsp;<%= comment.body %></span>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

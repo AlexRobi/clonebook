@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments
+  acts_as_voter
   include Gravtastic
   gravtastic size: 150
   has_friendship

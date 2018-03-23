@@ -1,36 +1,38 @@
 <section id="invitesIndex" class="pb-4">
-  <div class="invites container">
-    <h5><%= t('invites.respond_to') %></h5>
-    <p class="pending">
-      <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <%= t('invites.view_sent') %>
-      </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <% current_user.pending_friends.each do |request| %>
-        <div class="invite">
-          <%= link_to request, class: "invite__pp" do %>
-            <%= image_tag request.gravatar_url %>
-          <% end %>
-          <%= link_to request.username, request, class: "invite__username" %>
-          <div class="invite__pending"><%= t('invites.waiting') %></div>
-        </div>
+  <div class="invites-index__body">
+    <div class="invites container">
+      <h5><%= t('invites.respond_to') %></h5>
+      <p class="pending">
+        <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <%= t('invites.view_sent') %>
+        </a>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <% current_user.pending_friends.each do |request| %>
+          <div class="invite">
+            <%= link_to request, class: "invite__pp" do %>
+              <%= image_tag request.gravatar_url %>
+            <% end %>
+            <%= link_to request.username, request, class: "invite__username" %>
+            <div class="invite__pending"><%= t('invites.waiting') %></div>
+          </div>
+        <% end %>
+      </div>
+
+      <% if current_user.requested_friends.any? %>
+        <% current_user.requested_friends.each do |request| %>
+          <div class="invite">
+            <%= link_to request, class: "invite__pp" do %>
+              <%= image_tag request.gravatar_url %>
+            <% end %>
+            <%= link_to request.username, request, class: "invite__username" %>
+            <%= link_to t('invites.confirm'), accept_invite_url(request), method: :post, class: "btn btn-primary" %>
+            <%= link_to t('invites.delete_request'), decline_invite_url(request), method: :post, class: "btn btn-decline" %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="no-invites text-center"><%= t('invites.no-invites') %></div>
       <% end %>
     </div>
-
-    <% if current_user.requested_friends.any? %>
-      <% current_user.requested_friends.each do |request| %>
-        <div class="invite">
-          <%= link_to request, class: "invite__pp" do %>
-            <%= image_tag request.gravatar_url %>
-          <% end %>
-          <%= link_to request.username, request, class: "invite__username" %>
-          <%= link_to t('invites.confirm'), "invitations/accept/#{request.id}", method: :post, class: "btn btn-primary" %>
-          <%= link_to t('invites.delete_request'), "invitations/decline/#{request.id}", method: :post, class: "btn btn-decline" %>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="no-invites text-center"><%= t('invites.no-invites') %></div>
-    <% end %>
   </div>
 </section>

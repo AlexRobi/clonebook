@@ -35,8 +35,6 @@ $box-shadow-custom1: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .alert {
-  margin-top: 30px;
-  margin-bottom: 30px!important;
 }
 
 .alert-alert {
@@ -98,6 +96,7 @@ body {
 
 #home {
   padding: 20px;
+  padding-top: 40px;
   @include media-breakpoint-down(sm) {
     .post__form {
       max-width: 100%!important;
@@ -135,133 +134,6 @@ body {
     img {
       width: 40px;
       margin-right: 10px;
-    }
-  }
-  @include media-breakpoint-down(sm) {
-    .feed {
-      max-width: 100%!important;
-      flex: 0 0 100%!important;
-      margin-top: 20px!important;
-    }
-  }
-  .feed {
-    flex: 0 0 72%;
-    max-width: 72%;
-    margin-top: -97px;
-    .post {
-      background: #fff;
-      box-shadow: $box-shadow-custom1;
-      margin-bottom: 20px;
-      padding: 10px;
-      .post__header {
-        display: flex;
-        align-items: center;
-        img {
-          width: 45px;
-          margin-right: 10px;
-        }
-        .post__header__username {
-          color: $primary-color;
-          font-weight: bold;
-        }
-        .post__header__posted-at {
-          font-size: 12px;
-          color: #6f6b70;
-        }
-      }
-      .post__footer {
-        display: flex;
-        justify-content: space-between;
-        color: #898f9c;
-        font-size: 14px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #e5e5e5;
-      }
-      .post__btn {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 7px;
-      }
-    }
-    .comment-container {
-      background: #f2f3f5;
-      margin: -10px;
-      margin-top: 10px;
-      padding: 10px;
-      border-top: 1px solid #e1e2e3;
-      font-size: 0.9em;
-      img {
-        width: 35px;
-        margin-right: 10px;
-      }
-      form {
-        width: 1000px;
-        .form-control {
-          border-radius: 20px!important;
-        }
-        .btn {
-          float: right;
-          background: $primary-color;
-          color: white;
-          font-weight: bold;
-          margin-top: 10px;
-          padding: 0 10px!important;
-          &:hover {
-            background: $primary-color-hover;
-          }
-        }
-      }
-      .comment {
-        display: flex;
-        margin-bottom: 10px;
-        img {
-          width: 35px;
-          margin-right: 10px;
-        }
-        .comment__body {
-          background: #fff;
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          padding-left: 10px;
-          padding-right: 10px;
-          .comment__username {
-            font-weight: bold;
-          }
-        }
-      }
-    }
-  }
-  .user-info {
-    padding: 15px;
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
-    background: #fff;
-    img {
-      width: 125px;
-    }
-    .user-info__username {
-      font-weight: bold;
-      font-size: 1.2em;
-      margin: 20px 0;
-      padding: 0 20px;
-      max-width: 100%;
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-      white-space: nowrap !important;
-      word-wrap: normal !important;
-      a {
-        color: black;
-      }
-    }
-    .user-info__stats {
-      display: flex;
-      justify-content: space-around;
-      color: #657786;
-      font-weight: bold;
-      i {
-        color: $primary-color;
-        font-style: inherit;
-      }
     }
   }
 }
@@ -398,6 +270,8 @@ footer {
 /* Sign page */
 
 #sign {
+  padding: 20px;
+  padding-top: 40px;
   .sign-facebook {
     background: #3C66C4;
     color: #fff;
@@ -457,6 +331,16 @@ footer {
 
 /* User show */
 
+#userShow {
+  #user-show__body {
+    padding: 20px!important;
+    padding-top: 40px!important;
+    .feed {
+      margin-top: 0px!important;
+    }
+  }
+}
+
 #userNavbarMd {
   .user__cover {
     background: $primary-color;
@@ -506,9 +390,19 @@ footer {
   }
 }
 
+#liked-posts__body {
+  padding: 20px!important;
+  padding-top: 40px!important;
+  .feed {
+    margin-top: 0px!important;
+  }
+}
+
 #userNavbarXs {
   background: #fff;
   box-shadow: $box-shadow-custom1;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
   .user__cover {
     background: $primary-color;
     height: 100px;
@@ -520,6 +414,9 @@ footer {
       padding: 20px 20px 10px 20px;
       font-weight: bold;
       margin-top: -105px;
+      .user__username {
+        font-size: 1.2em;
+      }
       .avatar {
         box-shadow: $box-shadow-custom1;
         border: 3px solid #fff;
@@ -527,42 +424,47 @@ footer {
       }
     }
   }
-  nav {
-    ul {
-      margin-top: 10px;
-      padding: inherit;
-      list-style: none;
-      .user-nav-btn {
-        background: #fff;
-        border: 1px solid $primary-color;
-        color: $primary-color;
-        padding: 4px 16px;
-        border-radius: 20px;
-        font-weight: bold;
-        font-size: 0.9em;
-        &:hover {
-          color: $primary-color-hover;
-          border: 1px solid $primary-color;
-        }
-      }
-      li {
-        border-bottom: 1px solid #EDEEEF;
-        padding: 10px 0px 10px 20px;
-        a {
-          font-weight: bold;
-        }
-      }
-      .active {
-        background: $primary-color;
-        a {
-          color: white;
-        }
-      }
+  .dropdown-toggle {
+    display: block;
+    width: 100%;
+    color: #fff;
+    background-color: $primary-color!important;
+    border-color: $primary-color;
+    box-shadow: inherit;
+    font-weight: bold;
+    border-radius: inherit;
+    &:hover {
+      background: $primary-color-hover!important;
+    }
+  }
+  .dropdown-menu {
+    width: 100%;
+  }
+  .dropdown-item {
+    font-weight: bold;
+    &:active {
+      background: $primary-color;
+    }
+  }
+  .user-nav-btn {
+    background: #fff;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    &:hover {
+      color: $primary-color-hover;
+      border: 1px solid $primary-color;
     }
   }
 }
 
 #invitesIndex {
+  .invites-index__body {
+    padding: 20px;
+  }
   .no-invites {
     color: #adb3bc;
     font-weight: bold;
@@ -655,7 +557,7 @@ footer {
     color: #4b4f6a;
     font-weight: bold;
     padding: 15px;
-    margin: 50px -15px 0px -15px;
+    margin: 0px 0px 0px 0px;
     i {
       color: #adb3bc;
       margin-right: 10px;
@@ -665,8 +567,13 @@ footer {
       color: #90949c;
     }
   }
+  #friend-index__body {
+    padding: 20px;
+    padding-top: 40px;
+  }
   .friend-container {
     box-shadow: $box-shadow-custom1;
+    padding: 0px!important;
   }
   .row {
     background: #ffffff;
@@ -735,4 +642,150 @@ footer {
     color: $primary-color;
     font-weight: bold;
   }
+}
+
+/* SHARED */
+.page-item.active .page-link {
+  background-color: $primary-color!important;
+  border-color: $primary-color!important;
+  color: white!important;
+}
+.page-item .page-link {
+  color: $primary-color!important;
+}
+.user-info {
+  padding: 15px;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  background: #fff;
+  height: 271px;
+  img {
+    width: 125px;
+  }
+  .user-info__username {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 20px 0;
+    padding: 0 20px;
+    max-width: 100%;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    a {
+      color: black;
+    }
+  }
+  .user-info__stats {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    a {
+      color: #657786!important;
+    }
+    i {
+      color: $primary-color;
+      font-style: inherit;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+    .feed {
+      max-width: 100%!important;
+      flex: 0 0 100%!important;
+      margin-top: 20px!important;
+    }
+  }
+  .feed {
+    flex: 0 0 72%;
+    max-width: 72%;
+    margin-top: -97px;
+    .post {
+      background: #fff;
+      box-shadow: $box-shadow-custom1;
+      margin-bottom: 20px;
+      padding: 10px;
+      .post__header {
+        display: flex;
+        align-items: center;
+        img {
+          width: 45px;
+          margin-right: 10px;
+        }
+        .post__header__username {
+          color: $primary-color;
+          font-weight: bold;
+        }
+        .post__header__posted-at {
+          font-size: 12px;
+          color: #6f6b70;
+        }
+      }
+      .post__footer {
+        display: flex;
+        justify-content: space-between;
+        color: #898f9c;
+        font-size: 14px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .post__btn {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 7px;
+      }
+    }
+    .comment-container {
+      background: #f2f3f5;
+      margin: -10px;
+      margin-top: 10px;
+      padding: 10px;
+      border-top: 1px solid #e1e2e3;
+      font-size: 0.9em;
+      img {
+        width: 35px;
+        margin-right: 10px;
+      }
+      form {
+        width: 1000px;
+        .form-control {
+          border-radius: 20px!important;
+        }
+        .btn {
+          float: right;
+          background: $primary-color;
+          color: white;
+          font-weight: bold;
+          margin-top: 10px;
+          padding: 0 10px!important;
+          &:hover {
+            background: $primary-color-hover;
+          }
+        }
+      }
+      .comment {
+        display: flex;
+        margin-bottom: 10px;
+        img {
+          width: 35px;
+          margin-right: 10px;
+        }
+        .comment__body {
+          background: #fff;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
+          padding-right: 10px;
+          .comment__username {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+#editUser {
+  padding: 20px;
+  padding-top: 40px;
 }

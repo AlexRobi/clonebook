@@ -1,36 +1,40 @@
 <section id="friendsIndex" class="pb-4">
   <%= render 'shared/user_navbar' %>
 
-  <div class="container friend-container">
-    <h5><%= fa_icon "users" %><%= t('friends.title') %>
-      <span>· <%= @user.friends.count %></span>
-    </h5>
-    <div class="row">
-      <% if @user.friends.any? %>
-        <% @user.friends.each do |friend| %>
-          <div class="mx-auto friend">
-            <%= image_tag friend.gravatar_url %>
-            <%= link_to friend.username, friend, class: "friend__username" %>
-            <div class="btn-friend">
-              <% if current_user.friends_with?(friend) %>
-                <%= link_to t('user_navbar.unfriend'), "friends/remove/#{friend.id}",
-                                                    method: :post %>
-              <% elsif current_user == friend %>
-
-              <% elsif current_user.pending_friends.include?(friend) %>
-                <div style="color:#ced0d4;"><%= t('user_navbar.waiting') %></div>
-              <% elsif friend.pending_friends.include?(current_user) %>
-                <%= link_to t('user_navbar.respond_to'), invitations_path %>
-              <% else %>
-                <%= link_to t('user_navbar.add_friend'), send_request_path,
-                                                            method: :post  %>
+  <div id="friend-index__body">
+    <div class="container friend-container">
+      <h5><%= fa_icon "users" %><%= t('friends.title') %>
+        <span>· <%= @user.friends.count %></span>
+      </h5>
+      <div class="row no-gutters">
+        <% if @user.friends.any? %>
+          <% @user.friends.each do |friend| %>
+            <div class="mx-auto friend">
+              <%= link_to friend do %>
+                <%= image_tag friend.gravatar_url %>
               <% end %>
+              <%= link_to friend.username, friend, class: "friend__username" %>
+              <div class="btn-friend">
+                <% if current_user.friends_with?(friend) %>
+                  <%= link_to t('user_navbar.unfriend'), friend_remove_path(friend),
+                                                      method: :post %>
+                <% elsif current_user == friend %>
+
+                <% elsif current_user.pending_friends.include?(friend) %>
+                  <div style="color:#ced0d4;"><%= t('user_navbar.waiting') %></div>
+                <% elsif friend.pending_friends.include?(current_user) %>
+                  <%= link_to t('user_navbar.respond_to'), invitations_path %>
+                <% else %>
+                  <%= link_to t('user_navbar.add_friend'), send_request_path,
+                                                              method: :post  %>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <div class="no-friend mx-auto"><%= t('friends.no_friend') %></div>
         <% end %>
-      <% else %>
-        <div class="no-friend mx-auto"><%= t('friends.no_friend') %></div>
-      <% end %>
+      </div>
     </div>
   </div>
 </section>

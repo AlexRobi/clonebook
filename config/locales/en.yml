@@ -18,8 +18,16 @@ en:
     btn-post: "Post"
     posted_at: "Posted "
   post:
-    likes: "Likes"
+    like: " person likes this"
+    likes: " people like this"
     comments: "Comments"
+    error: "Your post can't be blank and must be shorter than 140 characters"
+    save: "Your post has been published"
+    unliked: "Unlike"
+    liked: "Like"
+  comment:
+    error: "Your comment can't be blank and must be shorter than 140 characters"
+    save: "Your comment has been published"
   sign:
     forget: "Forgot your password ?"
     sign_in: "Sign in"

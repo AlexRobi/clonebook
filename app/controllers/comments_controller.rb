@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       redirect_to root_url
-      flash[:success] = "You have created a new comment"
+      flash[:success] = t('comment.save')
     else
-      flash[:danger] = "Your comment has not been saved"
+      flash[:danger] = t('comment.error')
       redirect_to root_url
     end
   end

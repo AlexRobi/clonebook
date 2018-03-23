@@ -22,6 +22,8 @@ gem "font-awesome-rails"
 gem 'has_friendship'
 gem 'gravtastic'
 gem 'omniauth-facebook'
+gem 'will_paginate-bootstrap4'
+gem 'acts_as_votable', '~> 0.11.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

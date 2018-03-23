@@ -14,8 +14,16 @@ fr:
     btn-post: "Publier"
     posted_at: "Publié il y a "
   post:
-    likes: "J'aime"
+    like: " personne aime ça"
+    likes: " personnes aiment ça"
     comments: "Commentaires"
+    error: "Votre message ne doit pas être vide et doit comporter moins de 140 caractères"
+    save: "Votre publication a été publiée"
+    unliked: "Je n'aime plus"
+    liked: "J'aime"
+  comment:
+    error: "Votre commentaire ne doit pas être vide et doit comporter moins de 140 caractères"
+    save: "Votre commentaire a été publié"
   user-info:
     friends: "Amis"
     posts: "Publications"
