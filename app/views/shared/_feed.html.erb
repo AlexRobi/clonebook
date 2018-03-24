@@ -5,7 +5,8 @@
       <div class="ml-auto post">
         <div class="post__header">
           <%= link_to post.user do %>
-            <%= image_tag post.user.gravatar_url, class: "rounded-circle" %>
+            <div class="post-avatar avatar rounded-circle" style="background-image: url('<%= post.user.avatar_url %>')">
+            </div>
           <% end %>
           <div>
             <%= link_to post.user.username, post.user,
@@ -18,6 +19,17 @@
               <% end %>
             </div>
           </div>
+          <% if post.user == current_user %>
+            <div class="dropdown show ml-auto post__header__delete">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <%= link_to t('post.delete'), post, class: "ml-auto dropdown-item",
+                    method: :delete %>
+              </div>
+            </div>
+          <% end %>
         </div>
         <div class="post__body">
           <%= post.body %>
@@ -32,28 +44,28 @@
               <%= t('post.likes') %>
             <% end %>
           </div>
-          <div><%= post.comments.count %> <%= t('post.comments') %></div>
         </div>
         <div class="post__btn">
           <div>
             <% if current_user.voted_as_when_voted_for(post) %>
-              <%= link_to post_unliked_path(post), method: :post do %>
+              <%= link_to post_unliked_path(post), method: :post, remote: true do %>
                 <%= fa_icon "heart" %> <%= t('post.unliked') %>
               <% end %>
             <% else %>
-              <%= link_to post_liked_path(post), method: :post do %>
+              <%= link_to post_liked_path(post), method: :post, remote: true do %>
                 <%= fa_icon "heart" %> <%= t('post.liked') %>
               <% end %>
             <% end %>
           </div>
-          <a class="" data-toggle="collapse" href="#collapse<%= post.id %>"
-              role="button" aria-expanded="false" aria-controls="collapseExample">
-            <%= fa_icon "comment" %> <%= t('post.comments') %>
-          </a>
+          <div style="color: #898f9c;">
+            <%= fa_icon "comment" %> <%= post.comments.count %> <%= t('post.comments') %>
+          </div>
         </div>
-        <div class="collapse comment-container" id="collapse<%= post.id %>">
+        <div class="comment-container" id="collapse<%= post.id %>">
           <div class="d-flex">
-            <div><%= image_tag current_user.gravatar_url, class: "rounded-circle" %></div>
+            <div>
+              <div class="comment-avatar avatar rounded-circle" style="background-image: url('<%= current_user.avatar_url %>')"></div>
+            </div>
             <%= form_for(@comment) do |f| %>
               <%= f.text_field :body, placeholder: true, class: "form-control" %>
               <%= f.hidden_field :user_id, value: current_user.id %>
@@ -63,7 +75,9 @@
           </div>
           <% post.comments.each do |comment| %>
             <div class="comment">
-              <div><%= image_tag comment.user.gravatar_url, class: "rounded-circle" %></div>
+              <div>
+                <div class="comment-avatar avatar rounded-circle" style="background-image: url('<%= comment.user.avatar_url %>')"></div>
+              </div>
               <div class="comment__body">
                 <div>
                   <%= link_to comment.user.username, comment.user,

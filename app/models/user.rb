@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments
+  require "faker"
+  before_save { generate_avatar }
   acts_as_voter
   include Gravtastic
   gravtastic size: 150
@@ -20,4 +22,13 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
+  private
+
+  def generate_avatar
+    if self.avatar_url.blank?
+      self.avatar_url = Faker::Avatar.image("#{SecureRandom.urlsafe_base64}", "150x150", "jpg", "set4", "bg2")
+    end
+  end
+
 end

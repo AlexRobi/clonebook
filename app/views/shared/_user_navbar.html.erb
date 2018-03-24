@@ -26,8 +26,13 @@
           </li>
           <li class="nav-item">
             <% if @user == current_user %>
-              <%= link_to t('user_navbar.edit'), edit_user_registration_path,
-                                                class: "nav-link user-nav-btn" %>
+              <% if current_page?(edit_profile_path(current_user)) %>
+                <%= link_to t('user_navbar.cancel'), current_user,
+                                                     class: "nav-link user-nav-btn"%>
+              <% else %>
+                <%= link_to t('user_navbar.edit'), edit_profile_path(current_user),
+                                                  class: "nav-link user-nav-btn" %>
+              <% end %>
             <% else %>
               <% if current_user.friends_with?(@user) %>
                 <%= link_to t('user_navbar.unfriend'), friend_remove_path(@user),
@@ -53,7 +58,12 @@
   </div>
   <div class="container">
     <div class="user__pp col-2">
-      <%= image_tag @user.gravatar_url, class: "avatar w-100" %>
+      <% if @user.avatar_url.blank? %>
+        <%= image_tag @user.gravatar_url, class: "avatar w-100" %>
+      <% else %>
+        <div class="avatar rounded-circle" style="background-image: url('<%= @user.avatar_url %>')">
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -64,9 +74,36 @@
   </div>
   <div class="text-center user__pp-container">
     <div class="user_pp text-center d-inline-block">
-      <%= image_tag @user.gravatar_url, class: "avatar" %>
+      <div class="avatar rounded-circle" style="background-image: url('<%= @user.avatar_url %>')">
+      </div>
       <div class="user__username"><%= @user.username %></div>
     </div>
+  </div>
+
+  <div class="user-info__xs">
+    <% if !@user.bio.blank?%>
+      <div class="user-info__bio">
+        <%= @user.bio %>
+      </div>
+    <% end %>
+    <table style="width:100%">
+      <% if !@user.location.blank? %>
+        <tr>
+          <td><%= fa_icon "map-marker" %></td>
+          <td><%= @user.location %></td>
+        </tr>
+      <% end %>
+      <% if !@user.birthday.blank? %>
+        <tr>
+          <td><%= fa_icon "birthday-cake" %></td>
+          <td><%= t('user-show.birthday') %> <%= l(@user.birthday, format: "%d %B %Y") %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><%= fa_icon "calendar" %></td>
+        <td><%= t('user-show.joined') %> <%= l(@user.created_at, format: "%B %Y") %></td>
+      </tr>
+    </table>
   </div>
 
   <div class="dropdown show">
@@ -75,8 +112,10 @@
         <%= t('user_navbar.posts') %>
       <% elsif current_page?(user_friends_path) %>
         <%= t('user_navbar.friends') %>
-      <% elsif current_page?(liked_posts_path(@user))%>
+      <% elsif current_page?(liked_posts_path(@user)) %>
         <%= t('user_navbar.like') %>
+      <% elsif current_page?(edit_profile_path(@user)) %>
+        <%= t('user_navbar.edit') %>
       <% end %>
     </a>
 
@@ -95,8 +134,13 @@
       <div class="dropdown-divider"></div>
       <div class="text-center">
         <% if @user == current_user %>
-          <%= link_to t('user_navbar.edit'), edit_user_registration_path,
-                                            class: "user-nav-btn" %>
+          <% if current_page?(edit_profile_path(current_user)) %>
+            <%= link_to t('user_navbar.cancel'), current_user,
+                                                  class: "user-nav-btn"%>
+          <% else %>
+            <%= link_to t('user_navbar.edit'), edit_profile_path(current_user),
+                                              class: "user-nav-btn" %>
+          <% end %>
         <% else %>
           <% if current_user.friends_with?(@user) %>
             <%= link_to "Remove Friend", friend_remove_path(@user),

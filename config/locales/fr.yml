@@ -12,7 +12,7 @@ fr:
     login: "Pour visiter cette page, connectez-vous ou créez un compte."
   home:
     btn-post: "Publier"
-    posted_at: "Publié il y a "
+    posted_at: "Publiée il y a "
   post:
     like: " personne aime ça"
     likes: " personnes aiment ça"
@@ -21,6 +21,7 @@ fr:
     save: "Votre publication a été publiée"
     unliked: "Je n'aime plus"
     liked: "J'aime"
+    delete: "Supprimer cette publication"
   comment:
     error: "Votre commentaire ne doit pas être vide et doit comporter moins de 140 caractères"
     save: "Votre commentaire a été publié"
@@ -54,6 +55,15 @@ fr:
     friend_request_sent: "Invitation envoyée"
     unfriend: "Retirer de la liste d'amis"
     respond_to: "Répondre à la demande d'ami"
+    cancel: "Annuler"
+  edit-profile:
+    update: "Sauvegarder"
+    save: "Votre profil a été mis à jour"
+    new_avatar: "Un nouvel avatar a été généré"
+    btn-avatar: "Générer un nouvel avatar"
+  user-show:
+    birthday: "Né(e) le"
+    joined: "Inscrit depuis"
   invites:
     empty: "Aucune nouvelle invitation"
     respond_to: "Répondre à la demande d'ajout à la liste d'amis"

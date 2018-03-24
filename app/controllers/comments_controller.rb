@@ -3,11 +3,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
       flash[:success] = t('comment.save')
     else
       flash[:danger] = t('comment.error')
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     end
   end
 

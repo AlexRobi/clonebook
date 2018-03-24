@@ -24,6 +24,7 @@ gem 'gravtastic'
 gem 'omniauth-facebook'
 gem 'will_paginate-bootstrap4'
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

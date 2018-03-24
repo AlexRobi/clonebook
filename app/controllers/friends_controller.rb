@@ -7,7 +7,7 @@ class FriendsController < ApplicationController
     user = User.find(params[:id])
     if current_user.friend_request(user)
       flash[:info] = "#{t('friends.send')} #{user.username}"
-      redirect_to user
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -16,7 +16,7 @@ class FriendsController < ApplicationController
     if user.friends_with?(current_user)
       current_user.remove_friend(user)
       flash[:danger] = "#{user.username} #{t('friends.remove')}"
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     end
   end
 end

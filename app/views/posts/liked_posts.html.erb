@@ -6,30 +6,7 @@
     <% end %>
 
     <div class="row no-gutters">
-      <div class="user-info col-md-3 d-none d-md-block">
-        <div class="text-center">
-          <%= link_to @user do %>
-            <%= image_tag @user.gravatar_url, class: "rounded-circle" %>
-          <% end %>
-        </div>
-        <div class="text-center user-info__username">
-          <%= link_to @user.username, @user %>
-        </div>
-        <div class="user-info__stats">
-          <div>
-            <%= link_to @user do %>
-              <%= t('user-info.posts') %><br />
-              <i><%= @user.posts.count %></i>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to user_friends_url(@user) do %>
-              <%= t('user-info.friends') %><br />
-              <i><%= @user.friends.count%></i>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render 'shared/user-info' %>
 
       <%= render 'shared/feed' %>
     </div>

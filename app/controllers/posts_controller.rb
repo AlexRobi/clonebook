@@ -11,6 +11,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    if post.user == current_user
+      post.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def liked
     @post = Post.find(params[:id])
     @post.liked_by(current_user)
@@ -26,7 +36,7 @@ class PostsController < ApplicationController
   def liked_posts
     @comment = Comment.new
     @user = User.find(params[:id])
-    @posts = @user.get_voted(Post).order(created_at: :desc).paginate(:page => params[:page], :per_page => 15)
+    @posts = @user.get_voted(Post).order(created_at: :desc).paginate(:page => params[:page], :per_page => 7)
   end
 
   private

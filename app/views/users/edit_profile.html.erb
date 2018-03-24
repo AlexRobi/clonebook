@@ -1,0 +1,36 @@
+<section id="userEditProfile">
+  <%= render 'shared/user_navbar' %>
+  <div class="container" id="user-edit-profile__body">
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "alert alert-#{key} container" %>
+    <% end %>
+
+    <div class="row no-gutters">
+      <div class="user-info col-md-3">
+
+        <%= form_for(@user, url: update_profile_url) do |f| %>
+          <%= f.text_field :username, autofocus: true, class: "form-control",
+                                      placeholder: true %>
+          <%= f.text_field :bio, autofocus: true, class: "form-control",
+                                      placeholder: true %>
+          <%= f.text_field :location, autofocus: true, class: "form-control",
+                                      placeholder: true %>
+          <%= f.date_field :birthday, autofocus: true, class: "form-control",
+                                      placeholder: true %>
+          <div class="text-center">
+            <%= f.submit t('edit-profile.update'), class: "btn" %>
+          </div>
+        <% end %>
+        <%= form_for(@user) do |f| %>
+          <%= f.hidden_field :avatar_url, value: generate_avatar %>
+          <div class="text-center">
+            <%= f.submit t('edit-profile.btn-avatar'), class: "btn" %>
+          </div>
+        <% end %>
+
+      </div>
+
+      <%= render 'shared/feed' %>
+
+  </div>
+</section>

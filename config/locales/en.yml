@@ -25,6 +25,7 @@ en:
     save: "Your post has been published"
     unliked: "Unlike"
     liked: "Like"
+    delete: "Delete this post"
   comment:
     error: "Your comment can't be blank and must be shorter than 140 characters"
     save: "Your comment has been published"
@@ -37,6 +38,14 @@ en:
   edit_user:
     title: "Edit your account"
     current_password: " (required)"
+  edit-profile:
+    update: "Save changes"
+    save: "Profile updated"
+    new_avatar: "A new avatar has been generated"
+    btn-avatar: "Generate a new avatar"
+  user-show:
+    birthday: "Born on"
+    joined: "Joined"
   user_navbar:
     like: "Likes"
     edit: "Edit profile"

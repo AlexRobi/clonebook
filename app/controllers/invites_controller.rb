@@ -7,9 +7,9 @@ class InvitesController < ApplicationController
     if current_user.requested_friends.include?(user)
       current_user.accept_request(user)
       flash[:success] = "#{user.username} #{t('friends.add')}"
-      redirect_to user
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -17,9 +17,9 @@ class InvitesController < ApplicationController
     user = User.find(params[:id])
     if current_user.requested_friends.include?(user)
       current_user.decline_request(user)
-      redirect_to invitations_path
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to root_url
+      redirect_back(fallback_location: root_path)
     end
   end
 end

@@ -8,12 +8,6 @@
             <span class="d-none d-md-block"><%= t('header.home') %></span>
           </a>
         </li>
-        <li class="nav-item item-link">
-          <a href="#" class="link-home nav-link" style="font-size: 22px;position: relative; top: 4px;">
-            <%= fa_icon("bell") %>
-            <span class="d-none d-md-block">Notifications</span>
-          </a>
-        </li>
         <li class="nav-item item-link <%= 'active' if current_page?(invitations_path) %>">
           <a href="<%= invitations_path %>" class="link-home nav-link" style="font-size: 22px;position: relative; top: 4px;">
             <%= fa_icon("user-plus") %>
@@ -27,9 +21,10 @@
         </li>
         <li class="nav-item dropdown ml-auto">
           <a class="avatar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag current_user.gravatar_url, class: "header-avatar rounded-circle" %>
+            <div class="header-avatar avatar rounded-circle" style="background-image: url('<%= current_user.avatar_url %>')">
+            </div>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to current_user.username, current_user, class: "dropdown-header"%>
             <div class="dropdown-divider"></div>
             <%= link_to fa_icon("user") + t('header.profile'), current_user, class: "dropdown-item"%>
@@ -51,7 +46,7 @@
             <%= image_tag "lang_fr.png", class: "lang" %>
           <% end %>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a href="?locale=en" class="dropdown-item">
             <%= image_tag "lang_en.png", class: "lang" %>
           </a>

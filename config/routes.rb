@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :users, only: [:show]
-  resources :posts, only: [:new, :create, :show]
+  resources :users, only: [:show, :update]
+  resources :posts, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create]
   root 'static_pages#home'
   get 'invitations', to: "invites#index"
@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post 'post/:id/liked', to: "posts#liked", as: "post_liked"
   post 'post/:id/unliked', to: "posts#unliked", as: "post_unliked"
   get  'users/:id/liked_posts', to: "posts#liked_posts", as: "liked_posts"
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get  'users/:id/edit_profile', to: "users#edit_profile", as: "edit_profile"
+  patch  'users/:id/update_profile', to: "users#update_profile", as: "update_profile"
 end

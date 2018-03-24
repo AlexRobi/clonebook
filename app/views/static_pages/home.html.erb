@@ -8,9 +8,10 @@
     <% end %>
     <div class="row no-gutters">
       <div class="user-info col-md-3 d-none d-md-block">
+        <div class="user-info__cover"></div>
         <div class="text-center">
           <%= link_to current_user do %>
-            <%= image_tag current_user.gravatar_url, class: "rounded-circle" %>
+            <div class="mx-auto home-avatar avatar rounded-circle" style="background-image: url('<%= current_user.avatar_url %>')"></div>
           <% end %>
         </div>
         <div class="text-center user-info__username">
@@ -34,7 +35,7 @@
 
       <div class="dol-12 col-md-8 ml-auto post__form">
         <div class="d-flex">
-          <div><%= image_tag current_user.gravatar_url, class: "rounded-circle" %></div>
+          <div><div class="post-form-avatar avatar rounded-circle" style="background-image: url('<%= current_user.avatar_url %>')"></div></div>
           <%= form_for(@post) do |f| %>
             <%= f.text_area :body, class: "col-auto form-control",
                                     placeholder: true %>

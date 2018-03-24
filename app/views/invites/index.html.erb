@@ -11,7 +11,7 @@
         <% current_user.pending_friends.each do |request| %>
           <div class="invite">
             <%= link_to request, class: "invite__pp" do %>
-              <%= image_tag request.gravatar_url %>
+              <div class="mx-auto invite-avatar avatar" style="background-image: url('<%= request.avatar_url %>')"></div>
             <% end %>
             <%= link_to request.username, request, class: "invite__username" %>
             <div class="invite__pending"><%= t('invites.waiting') %></div>
@@ -23,7 +23,7 @@
         <% current_user.requested_friends.each do |request| %>
           <div class="invite">
             <%= link_to request, class: "invite__pp" do %>
-              <%= image_tag request.gravatar_url %>
+              <div class="mx-auto invite-avatar avatar" style="background-image: url('<%= request.avatar_url %>')"></div>
             <% end %>
             <%= link_to request.username, request, class: "invite__username" %>
             <%= link_to t('invites.confirm'), accept_invite_url(request), method: :post, class: "btn btn-primary" %>

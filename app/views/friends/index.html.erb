@@ -11,7 +11,7 @@
           <% @user.friends.each do |friend| %>
             <div class="mx-auto friend">
               <%= link_to friend do %>
-                <%= image_tag friend.gravatar_url %>
+                <div class="mx-auto friend-avatar avatar" style="background-image: url('<%= friend.avatar_url %>')"></div>
               <% end %>
               <%= link_to friend.username, friend, class: "friend__username" %>
               <div class="btn-friend">
