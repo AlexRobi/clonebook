@@ -1,5 +1,5 @@
-<section id="newPassword">
-  <div class="container col-lg-6 col-xl-4 my-4">
+<section id="newPassword" style="padding: 20px;">
+  <div class="container col-lg-6 col-xl-4">
     <h2><%= t('.change_your_password') %></h2>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -11,7 +11,7 @@
         <% if @minimum_password_length %>
           <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em><br />
         <% end %>
-        
+
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "lock" %></div>
@@ -22,7 +22,7 @@
 
       <div class="form-group">
         <div class="label"><%= t('devise.form.confirm_new_password') %><br />
-        
+
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text"><%= fa_icon "lock" %></div>

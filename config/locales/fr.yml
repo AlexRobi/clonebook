@@ -19,7 +19,7 @@ fr:
     comments: "Commentaires"
     error: "Votre message ne doit pas être vide et doit comporter moins de 140 caractères"
     save: "Votre publication a été publiée"
-    unliked: "Je n'aime plus"
+    unliked: "J'aime déjà"
     liked: "J'aime"
     delete: "Supprimer cette publication"
   comment:
